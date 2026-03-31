@@ -6,6 +6,17 @@ export default function Hero() {
     <section className="gaming-grid relative flex min-h-screen items-center overflow-hidden pt-20">
       <div className="scanline pointer-events-none absolute inset-0" />
 
+      {/* Background image with overlay */}
+      <div className="pointer-events-none absolute inset-0">
+        <img
+          src="/images/hero-gaming.jpg"
+          alt=""
+          className="h-full w-full object-cover opacity-15"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark-900/60 via-dark-900/80 to-dark-900" />
+      </div>
+
       {/* Ambient glow orbs */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/3 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-accent/6 blur-[120px]" />

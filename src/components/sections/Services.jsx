@@ -12,10 +12,16 @@ const iconMap = {
   rng: HiOutlineShieldCheck,
 };
 
+const imageMap = {
+  platform: "/images/svc-platform.jpg",
+  rgs: "/images/svc-rgs.jpg",
+  rng: "/images/svc-rng.jpg",
+};
+
 const accentMap = {
-  platform: { border: "hover:border-accent/40", icon: "bg-accent/10 text-accent group-hover:bg-accent/20", dot: "bg-accent/60" },
-  rgs: { border: "hover:border-neon/40", icon: "bg-neon/10 text-neon group-hover:bg-neon/20", dot: "bg-neon/60" },
-  rng: { border: "hover:border-purple/40", icon: "bg-purple/10 text-purple group-hover:bg-purple/20", dot: "bg-purple/60" },
+  platform: { border: "hover:border-accent/40", icon: "bg-accent/10 text-accent group-hover:bg-accent/20", dot: "bg-accent/60", overlay: "from-accent/10" },
+  rgs: { border: "hover:border-neon/40", icon: "bg-neon/10 text-neon group-hover:bg-neon/20", dot: "bg-neon/60", overlay: "from-neon/10" },
+  rng: { border: "hover:border-purple/40", icon: "bg-purple/10 text-purple group-hover:bg-purple/20", dot: "bg-purple/60", overlay: "from-purple/10" },
 };
 
 const cardVariants = {
@@ -65,28 +71,41 @@ export default function Services() {
                 viewport={{ once: true, amount: 0.2 }}
                 variants={cardVariants}
                 custom={i}
-                className={`group relative rounded-lg border border-dark-600 bg-dark-800/70 p-8 transition-all ${colors.border}`}
+                className={`group relative overflow-hidden rounded-lg border border-dark-600 bg-dark-800/70 transition-all ${colors.border}`}
               >
-                <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-lg transition-colors ${colors.icon}`}>
-                  <Icon size={24} />
+                {/* Card image */}
+                <div className="relative h-40 overflow-hidden">
+                  <img
+                    src={imageMap[svc.icon]}
+                    alt={svc.title}
+                    className="h-full w-full object-cover opacity-50 transition-all duration-500 group-hover:scale-105 group-hover:opacity-70"
+                    loading="lazy"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${colors.overlay} via-dark-800/60 to-dark-800`} />
+                  <div className={`absolute bottom-4 left-4 flex h-10 w-10 items-center justify-center rounded-lg ${colors.icon}`}>
+                    <Icon size={20} />
+                  </div>
                 </div>
-                <h3 className="font-display text-xl font-semibold uppercase tracking-wide text-white">
-                  {svc.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-gray-400">
-                  {svc.description}
-                </p>
-                <ul className="mt-5 space-y-2">
-                  {svc.features.map((feat) => (
-                    <li
-                      key={feat}
-                      className="flex items-center gap-2 text-sm text-gray-500"
-                    >
-                      <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${colors.dot}`} />
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
+
+                <div className="p-6 pt-4">
+                  <h3 className="font-display text-xl font-semibold uppercase tracking-wide text-white">
+                    {svc.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-400">
+                    {svc.description}
+                  </p>
+                  <ul className="mt-5 space-y-2">
+                    {svc.features.map((feat) => (
+                      <li
+                        key={feat}
+                        className="flex items-center gap-2 text-sm text-gray-500"
+                      >
+                        <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${colors.dot}`} />
+                        {feat}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             );
           })}

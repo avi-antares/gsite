@@ -51,9 +51,20 @@ export default function About() {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
             custom={2}
-            className="flex items-center"
+            className="flex flex-col gap-6"
           >
-            <div className="glow-green w-full rounded-lg border border-accent/20 bg-dark-800/80 p-8 lg:p-10">
+            {/* About image */}
+            <div className="relative overflow-hidden rounded-lg border border-dark-600">
+              <img
+                src="/images/about-team.jpg"
+                alt="Software development workspace with code on screen"
+                className="h-48 w-full object-cover opacity-70 transition-opacity hover:opacity-90 lg:h-56"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark-800 via-transparent to-transparent" />
+            </div>
+
+            <div className="glow-green w-full rounded-lg border border-accent/20 bg-dark-800/80 p-8">
               <h3 className="mb-6 font-display text-xl font-semibold uppercase tracking-wide text-accent">
                 What Sets Us Apart
               </h3>

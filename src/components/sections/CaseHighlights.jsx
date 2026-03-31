@@ -13,6 +13,13 @@ const hoverColors = {
   RNG: "hover:border-purple/30",
 };
 
+const imageMap = {
+  "Multi-Brand Casino Platform": "/images/case-casino.jpg",
+  "High-Performance RGS": "/images/case-server.jpg",
+  "Certified RNG Module": "/images/case-crypto.jpg",
+  "Sportsbook Microservices": "/images/case-sports.jpg",
+};
+
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i) => ({
@@ -57,19 +64,32 @@ export default function CaseHighlights() {
               viewport={{ once: true, amount: 0.2 }}
               variants={cardVariants}
               custom={i}
-              className={`group rounded-lg border border-dark-600 bg-dark-800/60 p-8 transition-all ${hoverColors[item.category] || "hover:border-gray-600"}`}
+              className={`group overflow-hidden rounded-lg border border-dark-600 bg-dark-800/60 transition-all ${hoverColors[item.category] || "hover:border-gray-600"}`}
             >
-              <span
-                className={`inline-block rounded border px-3 py-1 font-display text-xs font-semibold uppercase tracking-wider ${categoryColors[item.category] || "border-gray-600 bg-gray-500/15 text-gray-400"}`}
-              >
-                {item.category}
-              </span>
-              <h3 className="mt-4 font-display text-lg font-semibold uppercase tracking-wide text-white">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-gray-400">
-                {item.description}
-              </p>
+              {/* Thumbnail */}
+              <div className="relative h-36 overflow-hidden sm:h-44">
+                <img
+                  src={imageMap[item.title]}
+                  alt={item.title}
+                  className="h-full w-full object-cover opacity-40 transition-all duration-500 group-hover:scale-105 group-hover:opacity-60"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-800 via-dark-800/50 to-transparent" />
+                <span
+                  className={`absolute top-4 left-4 inline-block rounded border px-3 py-1 font-display text-xs font-semibold uppercase tracking-wider ${categoryColors[item.category] || "border-gray-600 bg-gray-500/15 text-gray-400"}`}
+                >
+                  {item.category}
+                </span>
+              </div>
+
+              <div className="p-6 pt-4">
+                <h3 className="font-display text-lg font-semibold uppercase tracking-wide text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-gray-400">
+                  {item.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
