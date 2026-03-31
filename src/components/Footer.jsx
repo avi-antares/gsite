@@ -2,13 +2,12 @@ import { company, nav, footer } from "../data/siteContent";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-dark-600 bg-dark-900">
+    <footer className="border-t border-accent/10 bg-dark-900">
       <div className="mx-auto max-w-7xl px-6 py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#" className="text-lg font-bold text-white">
-              <span className="text-accent">{company.name.split(" ")[0]}</span>{" "}
+            <a href="#" className="font-display text-xl font-bold uppercase tracking-wider text-white">
+              <span className="text-accent glow-text">{company.name.split(" ")[0]}</span>{" "}
               {company.name.split(" ").slice(1).join(" ")}
             </a>
             <p className="mt-3 max-w-sm text-sm text-gray-500">
@@ -17,9 +16,8 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-400">
+            <h4 className="mb-4 font-display text-sm font-semibold uppercase tracking-[0.2em] text-gray-400">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -27,7 +25,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-sm text-gray-500 transition-colors hover:text-white"
+                    className="text-sm text-gray-500 transition-colors hover:text-accent"
                   >
                     {item.label}
                   </a>
@@ -36,9 +34,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal & Social */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-400">
+            <h4 className="mb-4 font-display text-sm font-semibold uppercase tracking-[0.2em] text-gray-400">
               Legal
             </h4>
             <ul className="space-y-2">
@@ -46,7 +43,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm text-gray-500 transition-colors hover:text-white"
+                    className="text-sm text-gray-500 transition-colors hover:text-accent"
                   >
                     {link.label}
                   </a>
@@ -54,7 +51,7 @@ export default function Footer() {
               ))}
             </ul>
 
-            <h4 className="mb-4 mt-8 text-sm font-semibold uppercase tracking-wider text-gray-400">
+            <h4 className="mb-4 mt-8 font-display text-sm font-semibold uppercase tracking-[0.2em] text-gray-400">
               Connect
             </h4>
             <ul className="flex gap-4">
@@ -62,7 +59,7 @@ export default function Footer() {
                 <li key={s.label}>
                   <a
                     href={s.href}
-                    className="text-sm text-gray-500 transition-colors hover:text-white"
+                    className="text-sm text-gray-500 transition-colors hover:text-accent"
                     aria-label={s.label}
                   >
                     {s.label}
@@ -73,7 +70,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-dark-600 pt-8 text-center text-sm text-gray-600">
+        <div className="mt-12 border-t border-dark-600 pt-8 text-center font-display text-xs uppercase tracking-[0.2em] text-gray-600">
           {footer.copyright}
         </div>
       </div>

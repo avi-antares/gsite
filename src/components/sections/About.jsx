@@ -14,6 +14,8 @@ const fadeUp = {
 export default function About() {
   return (
     <section id="about" className="relative py-24 lg:py-32">
+      <div className="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
           <div>
@@ -23,7 +25,7 @@ export default function About() {
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeUp}
               custom={0}
-              className="text-3xl font-bold tracking-tight text-white sm:text-4xl"
+              className="font-display text-3xl font-bold uppercase tracking-tight text-white sm:text-4xl"
             >
               {about.heading}
             </motion.h2>
@@ -51,14 +53,14 @@ export default function About() {
             custom={2}
             className="flex items-center"
           >
-            <div className="w-full rounded-2xl border border-dark-600 bg-dark-800 p-8 lg:p-10">
-              <h3 className="mb-6 text-lg font-semibold text-white">
+            <div className="glow-green w-full rounded-lg border border-accent/20 bg-dark-800/80 p-8 lg:p-10">
+              <h3 className="mb-6 font-display text-xl font-semibold uppercase tracking-wide text-accent">
                 What Sets Us Apart
               </h3>
               <ul className="space-y-4">
                 {about.highlights.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded bg-accent/10 text-accent">
                       <HiCheck size={14} />
                     </span>
                     <span className="text-gray-300">{item}</span>

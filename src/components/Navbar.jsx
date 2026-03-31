@@ -28,26 +28,25 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-dark-900/95 backdrop-blur-md shadow-lg shadow-black/20"
+          ? "bg-dark-900/90 backdrop-blur-xl shadow-lg shadow-accent/5 border-b border-accent/10"
           : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#" className="text-xl font-bold tracking-tight text-white">
-          <span className="text-accent">{company.name.split(" ")[0]}</span>
+        <a href="#" className="font-display text-2xl font-bold uppercase tracking-wider text-white">
+          <span className="text-accent glow-text">{company.name.split(" ")[0]}</span>
           <span className="text-gray-100">
             {" "}
             {company.name.split(" ").slice(1).join(" ")}
           </span>
         </a>
 
-        {/* Desktop nav */}
         <ul className="hidden items-center gap-8 md:flex">
           {nav.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className="text-sm font-medium text-gray-400 transition-colors hover:text-white"
+                className="text-sm font-medium uppercase tracking-wide text-gray-500 transition-colors hover:text-accent"
               >
                 {item.label}
               </a>
@@ -56,16 +55,15 @@ export default function Navbar() {
           <li>
             <a
               href="#contact"
-              className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
+              className="rounded border border-accent bg-accent/10 px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-accent transition-all hover:bg-accent/20 hover:shadow-lg hover:shadow-accent/20"
             >
               Get in Touch
             </a>
           </li>
         </ul>
 
-        {/* Mobile toggle */}
         <button
-          className="text-white md:hidden"
+          className="text-accent md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
@@ -75,12 +73,11 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile nav */}
       {mobileOpen && (
         <div
           id="mobile-nav"
           role="menu"
-          className="border-t border-dark-600 bg-dark-900/98 backdrop-blur-md md:hidden"
+          className="border-t border-accent/10 bg-dark-900/98 backdrop-blur-xl md:hidden"
         >
           <ul className="flex flex-col gap-1 px-6 py-4">
             {nav.map((item) => (
@@ -88,7 +85,7 @@ export default function Navbar() {
                 <a
                   href={item.href}
                   onClick={handleClick}
-                  className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-300 transition-colors hover:bg-dark-700 hover:text-white"
+                  className="block rounded px-4 py-3 text-sm font-medium uppercase tracking-wide text-gray-400 transition-colors hover:bg-accent/5 hover:text-accent"
                 >
                   {item.label}
                 </a>
@@ -98,7 +95,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={handleClick}
-                className="block rounded-lg bg-accent px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
+                className="block rounded border border-accent bg-accent/10 px-4 py-3 text-center text-sm font-bold uppercase tracking-wide text-accent transition-all hover:bg-accent/20"
               >
                 Get in Touch
               </a>

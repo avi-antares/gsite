@@ -13,6 +13,8 @@ const fadeUp = {
 export default function Process() {
   return (
     <section id="process" className="relative py-24 lg:py-32">
+      <div className="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,10 +23,10 @@ export default function Process() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <p className="text-sm font-semibold uppercase tracking-wider text-accent">
+          <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-accent">
             How We Work
           </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-tight text-white sm:text-4xl">
             From Discovery to Delivery
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-gray-400">
@@ -34,8 +36,7 @@ export default function Process() {
         </motion.div>
 
         <div className="relative mt-16">
-          {/* Connecting line */}
-          <div className="absolute left-6 top-0 hidden h-full w-px bg-gradient-to-b from-accent/40 via-accent/20 to-transparent lg:left-1/2 lg:block" />
+          <div className="absolute left-6 top-0 hidden h-full w-px bg-gradient-to-b from-accent/50 via-neon/30 to-transparent lg:left-1/2 lg:block" />
 
           <div className="space-y-12 lg:space-y-16">
             {process.map((item, i) => (
@@ -50,8 +51,7 @@ export default function Process() {
                   i % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}
               >
-                {/* Step indicator */}
-                <div className="absolute left-6 top-0 z-10 hidden h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border-2 border-accent bg-dark-900 text-sm font-bold text-accent lg:left-1/2 lg:flex">
+                <div className="absolute left-6 top-0 z-10 hidden h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border-2 border-accent bg-dark-900 font-display text-sm font-bold text-accent shadow-lg shadow-accent/20 lg:left-1/2 lg:flex">
                   {item.step}
                 </div>
 
@@ -65,13 +65,12 @@ export default function Process() {
                 <div className="hidden w-10 shrink-0 lg:block" />
                 <div className="flex-1">
                   {i % 2 === 1 ? (
-                    <StepContent item={item} align="right" />
+                    <StepContent item={item} />
                   ) : (
                     <div className="hidden lg:block" />
                   )}
                 </div>
 
-                {/* Mobile view */}
                 <div className="lg:hidden">
                   <StepContent item={item} mobile />
                 </div>
@@ -87,13 +86,15 @@ export default function Process() {
 function StepContent({ item, mobile }) {
   return (
     <div
-      className={`rounded-2xl border border-dark-600 bg-dark-800 p-6 ${mobile ? "" : "hidden lg:block"}`}
+      className={`rounded-lg border border-dark-600 bg-dark-800/70 p-6 transition-colors hover:border-accent/20 ${mobile ? "" : "hidden lg:block"}`}
     >
       <div className="mb-2 flex items-center gap-3">
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/15 text-sm font-bold text-accent lg:hidden">
+        <span className="flex h-8 w-8 items-center justify-center rounded bg-accent/10 font-display text-sm font-bold text-accent lg:hidden">
           {item.step}
         </span>
-        <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+        <h3 className="font-display text-lg font-semibold uppercase tracking-wide text-white">
+          {item.title}
+        </h3>
       </div>
       <p className="text-sm leading-relaxed text-gray-400">
         {item.description}
